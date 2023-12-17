@@ -1,6 +1,7 @@
 using Moriarty.Msrc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Moriarty
 {
@@ -9,8 +10,6 @@ namespace Moriarty
         static void Main(string[] args)
         {
             Info.PrintLogo();
-            bool isDebugEnabled = false;
-
             foreach (var arg in args)
             {
                 switch (arg.ToLower())
@@ -33,11 +32,7 @@ namespace Moriarty
             }
 
             // If debug mode is enabled
-            if (isDebugEnabled)
-            {
-                // Your debug logic here
-                Console.WriteLine(" [DEBUG] Debug mode enabled.");
-            }
+            DebugUtility.DebugPrint("Debug mode enabled.");
 
             var supportedVersions = new Dictionary<int, string>()
             {
@@ -98,6 +93,9 @@ namespace Moriarty
             CVE_2020_1013.Check(vulnerabiltiies, buildNumber, installedKBs);
             CVE_2023_36664.Check(vulnerabiltiies);
             CVE_2021_1675.Check(vulnerabiltiies);
+            CVE_2021_44228.Check(vulnerabiltiies);
+            CVE_2022_40140.Check(vulnerabiltiies);
+            CVE_2022_22965.Check(vulnerabiltiies);
 
             // Print the results
             vulnerabiltiies.ShowResults();
