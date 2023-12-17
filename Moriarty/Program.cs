@@ -100,6 +100,7 @@ namespace Moriarty
             CVE_2020_0796.Check(vulnerabiltiies, buildNumber, installedKBs);
             CVE_2020_1013.Check(vulnerabiltiies, buildNumber, installedKBs);
             CVE_2023_36664.Check(vulnerabiltiies, isDebugEnabled);
+            CVE_2021_1675.Check(vulnerabiltiies);
 
             // Print the results
             vulnerabiltiies.ShowResults();

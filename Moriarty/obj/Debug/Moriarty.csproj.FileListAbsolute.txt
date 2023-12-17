@@ -1,0 +1,7 @@
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\bin\Debug\Moriarty.exe.config
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\bin\Debug\Moriarty.exe
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\bin\Debug\Moriarty.pdb
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\obj\Debug\Moriarty.csproj.AssemblyReference.cache
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\obj\Debug\Moriarty.csproj.CoreCompileInputs.cache
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\obj\Debug\Moriarty.exe
+C:\Users\dredg\Source\Repos\BC-SECURITY\Moriarty\Moriarty\obj\Debug\Moriarty.pdb
