@@ -22,7 +22,7 @@ namespace Moriarty
 
                     case "--debug":
                     case "-d":
-                        isDebugEnabled = true;
+                        DebugUtility.IsDebugEnabled = true;
                         break;
 
                     case "--help":
@@ -62,12 +62,9 @@ namespace Moriarty
             Console.WriteLine(" [*] Enumerating installed KBs...");
             var installedKBs = Wmi.GetInstalledKBs();
 
-            if (isDebugEnabled)
+            foreach (var kb in installedKBs)
             {
-                foreach (var kb in installedKBs)
-                {
-                    Console.WriteLine($" [DEBUG] {kb}");
-                }
+                DebugUtility.DebugPrint($"Installed KBs: {kb}");
             }
 
             // List of Vulnerabilities
@@ -99,7 +96,7 @@ namespace Moriarty
             CVE_2020_0683.Check(vulnerabiltiies, buildNumber, installedKBs);
             CVE_2020_0796.Check(vulnerabiltiies, buildNumber, installedKBs);
             CVE_2020_1013.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2023_36664.Check(vulnerabiltiies, isDebugEnabled);
+            CVE_2023_36664.Check(vulnerabiltiies);
             CVE_2021_1675.Check(vulnerabiltiies);
 
             // Print the results

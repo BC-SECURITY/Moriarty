@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Msrc\CVE-2021-1675.cs" />
+    <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\Info.cs" />
     <Compile Include="Msrc\CVE-2017-7199.cs" />
     <Compile Include="Msrc\CVE-2019-1253.cs" />
