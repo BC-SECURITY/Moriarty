@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
@@ -17,7 +18,7 @@ namespace Moriarty.Msrc
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities)
+        public static void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
             string filePath = Path.Combine(systemRoot, "system32", "win32k.sys");

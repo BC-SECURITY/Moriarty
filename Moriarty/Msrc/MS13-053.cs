@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
@@ -17,7 +18,7 @@ namespace Moriarty.Msrc
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities)
+        public static void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             if (Environment.Is64BitOperatingSystem)
             {

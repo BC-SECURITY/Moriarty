@@ -2,6 +2,8 @@ using Moriarty.Msrc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
+using System.Linq;
 
 namespace Moriarty
 {
@@ -62,43 +64,9 @@ namespace Moriarty
                 DebugUtility.DebugPrint($"Installed KBs: {kb}");
             }
 
-            // List of Vulnerabilities
-            var vulnerabiltiies = new VulnerabilityCollection();
-
-            // Check each one
-            MS10_015.Check(vulnerabiltiies);
-            MS10_092.Check(vulnerabiltiies);
-            MS13_053.Check(vulnerabiltiies);
-            MS13_081.Check(vulnerabiltiies);
-            MS14_058.Check(vulnerabiltiies);
-            MS15_051.Check(vulnerabiltiies);
-            MS15_078.Check(vulnerabiltiies);
-            MS16_016.Check(vulnerabiltiies);
-            MS16_032.Check(vulnerabiltiies);
-            MS16_034.Check(vulnerabiltiies);
-            MS16_135.Check(vulnerabiltiies);
-            CVE_2017_7199.Check(vulnerabiltiies);
-            CVE_2019_0836.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_0841.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1064.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1130.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1253.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1315.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1385.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1388.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2019_1405.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2020_0668.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2020_0683.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2020_0796.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2020_1013.Check(vulnerabiltiies, buildNumber, installedKBs);
-            CVE_2023_36664.Check(vulnerabiltiies);
-            CVE_2021_1675.Check(vulnerabiltiies);
-            CVE_2021_44228.Check(vulnerabiltiies);
-            CVE_2022_40140.Check(vulnerabiltiies);
-            CVE_2022_22965.Check(vulnerabiltiies);
-
-            // Print the results
-            vulnerabiltiies.ShowResults();
+            var vulnerabilities = new VulnerabilityCollection();
+            ExecuteVulnerabilityChecks(vulnerabilities, buildNumber, installedKBs);
+            vulnerabilities.ShowResults();
         }
         private static void ListVulnerabilities()
         {
@@ -109,6 +77,23 @@ namespace Moriarty
                 Console.WriteLine($"  - {vulnerability.Identification}");
             }
             Console.WriteLine();
+        }
+
+        private static void ExecuteVulnerabilityChecks(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
+        {
+            var typesWithCheckMethod = Assembly.GetExecutingAssembly()
+                                               .GetTypes()
+                                               .Where(t => t.Namespace == "Moriarty.Msrc"
+                                                           && t.GetMethod("Check") != null);
+
+            foreach (var type in typesWithCheckMethod)
+            {
+                MethodInfo checkMethod = type.GetMethod("Check", new Type[] { typeof(VulnerabilityCollection), typeof(int), typeof(List<int>) });
+                if (checkMethod != null && checkMethod.IsStatic)
+                {
+                    checkMethod.Invoke(null, new object[] { vulnerabilities, buildNumber, installedKBs });
+                }
+            }
         }
     }
 }
