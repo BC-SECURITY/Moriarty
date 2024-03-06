@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
-    internal static class MS15_078
+    public class MS15_078 : IVulnerabilityCheck
     {
         private const string Id = "MS15-078";
         private static readonly string[] Exploits = new[]
@@ -13,12 +13,12 @@ namespace Moriarty.Msrc
             "https://www.exploit-db.com/exploits/38222/"
         };
 
-        public static Vulnerability GetVulnerability()
+        public Vulnerability GetVulnerability()
         {
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
+        public void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
             string filePath = Path.Combine(systemRoot, "system32", "atmfd.dll");

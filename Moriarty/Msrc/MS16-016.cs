@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
-    internal static class MS16_016
+    public class MS16_016 : IVulnerabilityCheck
     {
         private const string Id = "MS16-016";
         private static readonly string[] Exploits = new[]
@@ -13,12 +13,12 @@ namespace Moriarty.Msrc
             "https://www.exploit-db.com/exploits/40085/"
         };
 
-        public static Vulnerability GetVulnerability()
+        public Vulnerability GetVulnerability()
         {
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
+        public void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             if (Environment.Is64BitOperatingSystem)
             {

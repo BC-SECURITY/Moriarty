@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
-    internal static class MS16_032
+    public class MS16_032 : IVulnerabilityCheck
     {
         private const string Id = "MS16-032";
         private static readonly string[] Exploits = new[]
@@ -13,12 +13,12 @@ namespace Moriarty.Msrc
             "https://www.exploit-db.com/exploits/39719/"
         };
 
-        public static Vulnerability GetVulnerability()
+        public Vulnerability GetVulnerability()
         {
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
+        public void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             // Check CPU core count
             if (Environment.ProcessorCount == 1)
