@@ -19,3 +19,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 -	Fix issue where CVE-2022-22965 incorrectly reported vulnerable if localhost failed to connect
+-   Fix issue where CVE-2023-36664 was not correctly enumerating files for version number
