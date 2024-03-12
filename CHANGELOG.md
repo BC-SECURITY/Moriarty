@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Added CVE-2021-26857
 -   Added CVE-2021-26858
 -   Added CVE-201-27065
+-   Added Build 19045 - 22H1 support
 
 ### Changed
 -	Remove redundant lists within program
