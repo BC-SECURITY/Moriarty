@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+-	Added CVE-2021-26855 (ProxyLogon) scan
+
 ### Changed
 -	Remove redundant lists within program
 
