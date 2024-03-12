@@ -24,51 +24,21 @@ namespace Moriarty.Msrc
             DebugUtility.DebugPrint("Running CVE-2021-26857 checks...");
 
             string exchangeInstallPath = Environment.GetEnvironmentVariable("ExchangeInstallPath");
-
-            // Check if the ExchangeInstallPath environment variable is not set or empty
-            if (string.IsNullOrWhiteSpace(exchangeInstallPath))
+            if (string.IsNullOrEmpty(exchangeInstallPath))
             {
-                DebugUtility.DebugPrint("ExchangeInstallPath environment variable is not set or is empty. Cannot proceed with checks.");
-                return; // Exit the method as we can't proceed without the installation path
+                DebugUtility.DebugPrint("ExchangeInstallPath environment variable is not set or empty. Cannot proceed with CVE-2021-26857 checks.");
+                return;
             }
 
-            string[] logPaths = {
-        Path.Combine(exchangeInstallPath, @"V15\Logging\OABGeneratorLog\*.log"),
-        Path.Combine(exchangeInstallPath, @"Logging\OABGeneratorLog\*.log")
-    };
-
-            string outputPath = Path.Combine(Environment.GetEnvironmentVariable("SystemRoot"), "temp", Environment.MachineName + "-exch", "OABGeneratorLog.txt");
-            Directory.CreateDirectory(Path.GetDirectoryName(outputPath)); // Ensure the output directory exists
-
-            bool foundSuspiciousData = false;
-
-            foreach (var logPath in logPaths)
+            string logPath = Path.Combine(exchangeInstallPath, @"V15\Logging\OABGeneratorLog\");
+            if (Directory.Exists(logPath) && Directory.GetFiles(logPath, "*.log").Any())
             {
-                if (Directory.Exists(Path.GetDirectoryName(logPath)))
-                {
-                    var logFiles = Directory.GetFiles(Path.GetDirectoryName(logPath), "*.log");
-                    foreach (var logFile in logFiles)
-                    {
-                        var lines = File.ReadAllLines(logFile);
-                        var suspiciousLines = lines.Where(line => line.Contains("Download failed and temporary file"));
-                        if (suspiciousLines.Any())
-                        {
-                            File.AppendAllLines(outputPath, suspiciousLines);
-                            foundSuspiciousData = true;
-                        }
-                    }
-                }
-            }
-
-            if (foundSuspiciousData)
-            {
-                DebugUtility.DebugPrint($"Suspicious data in OAB Logs. See {outputPath} for details.");
+                DebugUtility.DebugPrint("Potential CVE-2021-26857 exploitability detected due to the presence of OABGenerator logs.");
                 vulnerabilities.SetAsVulnerable(Id);
             }
             else
             {
-                File.WriteAllText(outputPath, "Nothing Suspicious in OAB Logs");
-                DebugUtility.DebugPrint("Nothing Suspicious in OAB Logs");
+                DebugUtility.DebugPrint("No OABGenerator logs found. System likely not exploitable for CVE-2021-26857.");
             }
         }
     }
