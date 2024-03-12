@@ -43,6 +43,7 @@ Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detai
 | CVE-2021-26858 | A post-authentication arbitrary file write vulnerability in Exchange Server. | [CVE-2021-26858](https://www.cve.org/CVERecord?id=CVE-2021-26858) |
 | CVE-2021-27065 | A post-authentication arbitrary file write vulnerability in Exchange Server could lead to remote code execution. | [CVE-2021-27065](https://www.cve.org/CVERecord?id=CVE-2021-27065) |
 | CVE-2021-44228 | Log4Shell, a remote code execution vulnerability in Apache Log4j. | [CVE-2021-44228](https://www.cve.org/CVERecord?id=CVE-2021-44228) |
+| CVE-2021-36934 | HiveNightmare - A vulnerability that allows for local privilege escalation due to overly permissive Access Control Lists (ACLs) on system files, including the Security Accounts Manager (SAM). | [CVE-2021-36934](https://www.cve.org/CVERecord?id=CVE-2021-36934) |
 | CVE-2022-40140 | A vulnerability in Microsoft Exchange Server leading to remote code execution. | [CVE-2022-40140](https://www.cve.org/CVERecord?id=CVE-2022-40140) |
 | CVE-2022-22965 | Spring4Shell, a remote code execution vulnerability in Spring Framework. | [CVE-2022-22965](https://www.cve.org/CVERecord?id=CVE-2022-22965) |
 
