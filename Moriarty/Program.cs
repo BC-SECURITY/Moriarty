@@ -49,6 +49,9 @@ namespace Moriarty
             new CVE_2022_22965(),
             new CVE_2021_26855(),
             new CVE_2021_36934(),
+            new CVE_2021_26857(),
+            new CVE_2021_27065(),
+            new CVE_2021_26858(),
         };
 
         static void Main(string[] args)
@@ -82,18 +85,16 @@ namespace Moriarty
             {
                 { 10240, "1507" }, { 10586, "1511" }, { 14393, "1607" }, { 15063, "1703" }, { 16299, "1709" },
                 { 17134, "1803" }, { 17763, "1809" }, { 18362, "1903" }, { 18363, "1909" }, { 19041, "2004" },
-                { 19042, "20H2" }, { 19043, "21H1" }, { 19044, "21H2" },
+                { 19042, "20H2" }, { 19043, "21H1" }, { 19044, "21H2" }, { 19045, "22H1" },
                 { 22000, "21H2" }, { 22621, "22H2" }, { 22631, "23H2" },
             };
 
             var buildNumber = Wmi.GetBuildNumber();
-
             if (!supportedVersions.TryGetValue(buildNumber, out var version))
             {
                 Console.Error.WriteLine(buildNumber != 0
-                    ? $" [!] Windows version not supported. Build number: {buildNumber}"
-                    : " [!] Could not retrieve Windows BuildNumber");
-                return;
+                    ? $" [!] Warning: Windows version may not be supported. Build number: {buildNumber}. Proceeding with checks."
+                    : " [!] Could not retrieve Windows Build Number. Proceeding with checks.");
             }
 
             Console.WriteLine($" [*] OS Version: {version} ({buildNumber})");
@@ -106,6 +107,7 @@ namespace Moriarty
                 DebugUtility.DebugPrint($"Installed KBs: {kb}");
             }
 
+            Console.WriteLine(" [*] Evaluating potential CVEs...");
             var vulnerabilities = new VulnerabilityCollection(vulnerabilityChecks);
             ExecuteVulnerabilityChecks(vulnerabilities, buildNumber, installedKBs);
             vulnerabilities.ShowResults();

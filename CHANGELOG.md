@@ -17,9 +17,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 -   Added CVE-2021-26855 (ProxyLogon) scan
 -   Added CVE 2021-36934 (HiveNightmare)
+-   Added CVE-2021-26857
+-   Added CVE-2021-26858
+-   Added CVE-2021-27065
+-   Added 22H1 and 23H2 support
 
-### Changed
+### Removed
 -   Remove redundant lists within program
+
+### Changed**
+-   Updated Windows version check to return build number if not supported but still run
 
 ### Fixed
 -   Fix issue where CVE-2022-22965 incorrectly reported vulnerable if localhost failed to connect
