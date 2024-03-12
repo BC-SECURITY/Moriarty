@@ -89,13 +89,11 @@ namespace Moriarty
             };
 
             var buildNumber = Wmi.GetBuildNumber();
-
             if (!supportedVersions.TryGetValue(buildNumber, out var version))
             {
                 Console.Error.WriteLine(buildNumber != 0
-                    ? $" [!] Windows version not supported. Build number: {buildNumber}"
-                    : " [!] Could not retrieve Windows BuildNumber");
-                return;
+                    ? $" [!] Warning: Windows version may not be supported. Build number: {buildNumber}. Proceeding with checks."
+                    : " [!] Could not retrieve Windows Build Number. Proceeding with checks.");
             }
 
             Console.WriteLine($" [*] OS Version: {version} ({buildNumber})");

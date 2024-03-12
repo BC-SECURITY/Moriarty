@@ -2,8 +2,8 @@
 Moriarty is a comprehensive .NET tool that extends the functionality of [Watson](https://github.com/rasta-mouse/Watson) and [Sherlock](https://github.com/rasta-mouse/sherlock), originally developed by [@_RastaMouse](https://twitter.com/_RastaMouse). It is designed to enumerate missing KBs, detect various vulnerabilities, and suggest potential exploits for Privilege Escalation in Windows environments. Moriarty combines the capabilities of Watson and Sherlock, adding enhanced scanning for newer vulnerabilities and integrating additional checks.
 
 # Supported Versions
-Windows 10 (Versions: 1507, 1511, 1607, 1703, 1709, 1803, 1809, 1903, 1909, 2004, 20H2, 21H1, 21H2, 22H2)
-Windows 11 (Versions: 21H2, 22H2)
+Windows 10 (Versions: 1507, 1511, 1607, 1703, 1709, 1803, 1809, 1903, 1909, 2004, 20H2, 21H1, 21H2, 22H1, 22H2)
+Windows 11 (Versions: 21H2, 22H1, 22H2, 23H1)
 Server 2016, 2019, 2022
 
 # CVEs and Vulnerabilities
@@ -38,6 +38,10 @@ Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detai
 | CVE-2020-1013 | A local privilege escalation vulnerability in Windows Update Orchestrator Service. | [CVE-2020-1013](https://www.cve.org/CVERecord?id=CVE-2020-1013) |
 | CVE-2023-36664 | A command injection vulnerability in Ghostscript. | [CVE-2023-36664](https://www.cve.org/CVERecord?id=CVE-2023-36664) |
 | CVE-2021-1675 | PrintNightmare, a remote code execution vulnerability in Windows Print Spooler. | [CVE-2021-1675](https://www.cve.org/CVERecord?id=CVE-2021-1675) |
+| CVE-2021-26855 | ProxyLogon - A server-side request forgery (SSRF) vulnerability in Exchange Server allowing remote code execution. | [CVE-2021-26855](https://www.cve.org/CVERecord?id=CVE-2021-26855) |
+| CVE-2021-26857 | A vulnerability in Exchange Server that could allow an attacker to perform remote code execution. | [CVE-2021-26857](https://www.cve.org/CVERecord?id=CVE-2021-26857) |
+| CVE-2021-26858 | A post-authentication arbitrary file write vulnerability in Exchange Server. | [CVE-2021-26858](https://www.cve.org/CVERecord?id=CVE-2021-26858) |
+| CVE-2021-27065 | A post-authentication arbitrary file write vulnerability in Exchange Server could lead to remote code execution. | [CVE-2021-27065](https://www.cve.org/CVERecord?id=CVE-2021-27065) |
 | CVE-2021-44228 | Log4Shell, a remote code execution vulnerability in Apache Log4j. | [CVE-2021-44228](https://www.cve.org/CVERecord?id=CVE-2021-44228) |
 | CVE-2022-40140 | A vulnerability in Microsoft Exchange Server leading to remote code execution. | [CVE-2022-40140](https://www.cve.org/CVERecord?id=CVE-2022-40140) |
 | CVE-2022-22965 | Spring4Shell, a remote code execution vulnerability in Spring Framework. | [CVE-2022-22965](https://www.cve.org/CVERecord?id=CVE-2022-22965) |
