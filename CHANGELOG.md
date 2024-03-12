@@ -15,12 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
--	  Added CVE-2021-26855 (ProxyLogon) scan
+-   Added CVE-2021-26855 (ProxyLogon) scan
 -   Added CVE 2021-36934 (HiveNightmare)
 
 ### Changed
--	Remove redundant lists within program
+-   Remove redundant lists within program
 
 ### Fixed
--	  Fix issue where CVE-2022-22965 incorrectly reported vulnerable if localhost failed to connect
+-   Fix issue where CVE-2022-22965 incorrectly reported vulnerable if localhost failed to connect
 -   Fix issue where CVE-2023-36664 was not correctly enumerating files for version number
