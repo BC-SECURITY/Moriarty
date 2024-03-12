@@ -105,6 +105,7 @@ namespace Moriarty
                 DebugUtility.DebugPrint($"Installed KBs: {kb}");
             }
 
+            Console.WriteLine(" [*] Evaluating potential CVEs...");
             var vulnerabilities = new VulnerabilityCollection(vulnerabilityChecks);
             ExecuteVulnerabilityChecks(vulnerabilities, buildNumber, installedKBs);
             vulnerabilities.ShowResults();
