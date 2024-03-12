@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Msrc\CVE-2021-1675.cs" />
+    <Compile Include="Msrc\CVE-2021-36934.cs" />
     <Compile Include="Msrc\CVE-2021-26858.cs" />
     <Compile Include="Msrc\CVE-2021-27065.cs" />
     <Compile Include="Msrc\CVE-2021-44228.cs" />
