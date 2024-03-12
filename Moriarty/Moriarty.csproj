@@ -65,10 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Msrc\CVE-2021-1675.cs" />
+    <Compile Include="Msrc\CVE-2021-26858.cs" />
+    <Compile Include="Msrc\CVE-2021-27065.cs" />
     <Compile Include="Msrc\CVE-2021-44228.cs" />
     <Compile Include="Msrc\CVE-2022-22965.cs" />
     <Compile Include="Msrc\CVE-2022-40140.cs" />
     <Compile Include="Msrc\CVE_2021_26855.cs" />
+    <Compile Include="Msrc\CVE_2021_26857.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\Info.cs" />
     <Compile Include="Msrc\CVE-2017-7199.cs" />
