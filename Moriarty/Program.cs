@@ -47,6 +47,7 @@ namespace Moriarty
             new CVE_2021_44228(),
             new CVE_2022_40140(),
             new CVE_2022_22965(),
+            new CVE_2021_26855(),
             new CVE_2021_36934(),
         };
 
