@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 -   Added CVE-2021-26855 (ProxyLogon) scan
 -   Added CVE 2021-36934 (HiveNightmare)
--   Added CVE-2021-26855 (ProxyLogon) scan
 -   Added CVE-2021-26857
 -   Added CVE-2021-26858
 -   Added CVE-2021-27065
