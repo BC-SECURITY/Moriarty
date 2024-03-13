@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 -   Remove redundant lists within program
 
-### Changed**
+### Changed
 -   Updated Windows version check to return build number if not supported but still run
 
 ### Fixed
