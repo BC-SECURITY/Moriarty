@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
-    internal static class MS16_034
+    public class MS16_034 : IVulnerabilityCheck
     {
         private const string Id = "MS16-034";
         private static readonly string[] Exploits = new[]
@@ -12,12 +13,12 @@ namespace Moriarty.Msrc
             "https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS16-034"
         };
 
-        public static Vulnerability GetVulnerability()
+        public Vulnerability GetVulnerability()
         {
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities)
+        public void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             string systemRoot = Environment.GetEnvironmentVariable("SystemRoot");
             string filePath;

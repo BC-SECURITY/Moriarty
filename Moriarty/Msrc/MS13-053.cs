@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Moriarty.Msrc
 {
-    internal static class MS13_053
+    public class MS13_053 : IVulnerabilityCheck
     {
         private const string Id = "MS13-053";
         private static readonly string[] Exploits = new[]
@@ -12,12 +13,12 @@ namespace Moriarty.Msrc
             "https://www.exploit-db.com/exploits/33213/"
         };
 
-        public static Vulnerability GetVulnerability()
+        public Vulnerability GetVulnerability()
         {
             return new Vulnerability(Id, Exploits);
         }
 
-        public static void Check(VulnerabilityCollection vulnerabilities)
+        public void Check(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
             if (Environment.Is64BitOperatingSystem)
             {
