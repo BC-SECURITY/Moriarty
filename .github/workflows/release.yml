@@ -10,10 +10,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4.1.1
     
     - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2
       
     - name: Restore NuGet packages
       run: nuget restore Moriarty.sln
@@ -22,7 +22,7 @@ jobs:
       run: msbuild Moriarty.sln /p:Configuration=Release /p:Platform="Any CPU"
       
     - name: Upload Build Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4.3.1
       with:
         name: MoriartyExecutable
         path: Moriarty/bin/Release/Moriarty.exe
@@ -31,12 +31,12 @@ jobs:
     needs: build
     runs-on: windows-latest
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v4.1.2
       with:
         name: MoriartyExecutable
         path: ./ 
         
-    - uses: softprops/action-gh-release@v1
+    - uses: softprops/action-gh-release@v2.0.4
       with:
         files: './Moriarty.exe'
       env:
