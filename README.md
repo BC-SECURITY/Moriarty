@@ -1,12 +1,54 @@
 # Moriarty
 Moriarty is a comprehensive .NET tool that extends the functionality of [Watson](https://github.com/rasta-mouse/Watson) and [Sherlock](https://github.com/rasta-mouse/sherlock), originally developed by [@_RastaMouse](https://twitter.com/_RastaMouse). It is designed to enumerate missing KBs, detect various vulnerabilities, and suggest potential exploits for Privilege Escalation in Windows environments. Moriarty combines the capabilities of Watson and Sherlock, adding enhanced scanning for newer vulnerabilities and integrating additional checks.
 
-# Supported Versions
+## Supported Versions
 - Windows 10 (Versions: 1507, 1511, 1607, 1703, 1709, 1803, 1809, 1903, 1909, 2004, 20H2, 21H1, 21H2, 22H1, 22H2)
 - Windows 11 (Versions: 21H2, 22H1, 22H2, 23H1)
 - Server 2016, 2019, 2022
 
-# CVEs and Vulnerabilities
+## Installation and Build Instructions
+First, clone the Moriarty repository to your local machine using Git:
+
+```bash
+git clone https://github.com/BC-SECURITY/Moriarty.git
+```
+
+### Building the Project
+
+After cloning the repository, you can build the Moriarty executable using Visual Studio.
+
+### Using Visual Studio
+
+1. Open `Moriarty.sln` in Visual Studio.
+2. Right-click on the solution in Solution Explorer and select "Restore NuGet Packages" to ensure all dependencies are up to date.
+3. Set the build configuration to "Release".
+4. Build the solution by selecting "Build > Build Solution" from the menu.
+
+## Usage
+```
+C:\> Moriarty.exe
+███    ███  ██████  ██████  ██  █████  ██████  ████████ ██    ██
+████  ████ ██    ██ ██   ██ ██ ██   ██ ██   ██    ██     ██  ██
+██ ████ ██ ██    ██ ██████  ██ ███████ ██████     ██      ████
+██  ██  ██ ██    ██ ██   ██ ██ ██   ██ ██   ██    ██       ██
+██      ██  ██████  ██   ██ ██ ██   ██ ██   ██    ██       ██
+
+                                                 v1.0
+                                                 BC Security
+
+ [*] OS Version: 22H2 (22621)
+ [*] Enumerating installed KBs...
+ [+] CVE-2023-36664 : VULNERABLE
+  [>] https://github.com/jakabakos/CVE-2023-36664-Ghostscript-command-injection
+
+ [+] PrintNightmare (CVE-2021-1675, CVE-2021-34527) : VULNERABLE
+  [>] https://github.com/xbufu/PrintNightmareCheck/tree/main
+
+ [*] Vulnerabilities found: 2/30
+ [+] Scan Complete!
+```
+
+## CVEs and Vulnerabilities
 Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detailing each, along with a more detailed description and links to the CVE database.
 
 | CVE/Vulnerability ID | Description | 
@@ -46,27 +88,3 @@ Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detai
 | [CVE-2022-40140](https://www.cve.org/CVERecord?id=CVE-2022-40140) | A vulnerability in Microsoft Exchange Server leading to remote code execution. |
 | [CVE-2022-22965](https://www.cve.org/CVERecord?id=CVE-2022-22965) | Spring4Shell, a remote code execution vulnerability in Spring Framework. |
 | [CVE-2023-36664](https://www.cve.org/CVERecord?id=CVE-2023-36664) | Artifex Ghostscript through 10.01.2 mishandles permission validation for pipe devices (with the %pipe% prefix or the | pipe character prefix). |
-
-# Usage
-```
-C:\> Moriarty.exe
-███    ███  ██████  ██████  ██  █████  ██████  ████████ ██    ██
-████  ████ ██    ██ ██   ██ ██ ██   ██ ██   ██    ██     ██  ██
-██ ████ ██ ██    ██ ██████  ██ ███████ ██████     ██      ████
-██  ██  ██ ██    ██ ██   ██ ██ ██   ██ ██   ██    ██       ██
-██      ██  ██████  ██   ██ ██ ██   ██ ██   ██    ██       ██
-
-                                                 v1.0
-                                                 BC Security
-
- [*] OS Version: 22H2 (22621)
- [*] Enumerating installed KBs...
- [+] CVE-2023-36664 : VULNERABLE
-  [>] https://github.com/jakabakos/CVE-2023-36664-Ghostscript-command-injection
-
- [+] PrintNightmare (CVE-2021-1675, CVE-2021-34527) : VULNERABLE
-  [>] https://github.com/xbufu/PrintNightmareCheck/tree/main
-
- [*] Vulnerabilities found: 2/30
- [+] Scan Complete!
-```
