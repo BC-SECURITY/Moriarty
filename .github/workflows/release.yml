@@ -1,0 +1,43 @@
+name: .NET Framework Build and Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build .NET Framework Application
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Restore NuGet packages
+      run: nuget restore Moriarty.sln
+      
+    - name: Build the project
+      run: msbuild Moriarty.sln /p:Configuration=Release /p:Platform="Any CPU"
+      
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: MoriartyExecutable
+        path: Moriarty/bin/Release/Moriarty.exe
+
+  release:
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: MoriartyExecutable
+        path: ./ 
+        
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: './Moriarty.exe'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
