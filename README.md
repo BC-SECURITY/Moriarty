@@ -52,7 +52,7 @@ C:\> Moriarty.exe
 Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detailing each, along with a more detailed description and links to the CVE database.
 
 | CVE/Vulnerability ID | Description | 
-| -------------------- | ----------- |
+| --------------------- | ----------- |
 | [MS10-015](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-015) | Vulnerability in Windows Kernel related to privilege elevation, allowing attackers to execute arbitrary code. |
 | [MS10-092](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-092) | Vulnerability in Windows Task Scheduler allowing for arbitrary code execution with escalated privileges. |
 | [MS13-053](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-053) | Multiple vulnerabilities in Windows Kernel-Mode Drivers that could allow elevation of privilege. |
@@ -87,4 +87,4 @@ Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detai
 | [CVE-2021-36934](https://www.cve.org/CVERecord?id=CVE-2021-36934) | HiveNightmare - A vulnerability that allows for local privilege escalation due to overly permissive Access Control Lists (ACLs) on system files, including the Security Accounts Manager (SAM). |
 | [CVE-2022-40140](https://www.cve.org/CVERecord?id=CVE-2022-40140) | A vulnerability in Microsoft Exchange Server leading to remote code execution. |
 | [CVE-2022-22965](https://www.cve.org/CVERecord?id=CVE-2022-22965) | Spring4Shell, a remote code execution vulnerability in Spring Framework. |
-| [CVE-2023-36664](https://www.cve.org/CVERecord?id=CVE-2023-36664) | Artifex Ghostscript through 10.01.2 mishandles permission validation for pipe devices (with the %pipe% prefix or the | pipe character prefix). |
+| [CVE-2023-36664](https://www.cve.org/CVERecord?id=CVE-2023-36664) | Artifex Ghostscript through 10.01.2 mishandles permission validation for pipe devices (with the %pipe% prefix or the pipe character prefix). |
