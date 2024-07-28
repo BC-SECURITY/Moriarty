@@ -12,7 +12,7 @@ namespace Moriarty
 
     class Program
     {
-        static List<IVulnerabilityCheck> vulnerabilityChecks = new List<IVulnerabilityCheck>
+        static List<IVulnerabilityCheck> localVulnerabilityChecks = new List<IVulnerabilityCheck>
         {
             new MS10_015(),
             new MS10_092(),
@@ -50,18 +50,33 @@ namespace Moriarty
             new CVE_2021_26858(),
             new CVE_2022_34718(),
             new CVE_2023_36664(),
-            new CVE_2023_23397(),
+        };
+
+        static List<IVulnerabilityCheck> remoteVulnerabilityChecks = new List<IVulnerabilityCheck>
+        {
+            new MS13_053(),
         };
 
         public static void Main(string[] args)
         {
             Info.PrintLogo();
+
+            if (args.Length == 0)
+            {
+                Info.PrintHelp();
+                return;
+            }
+
+            var targetMachines = new List<string>();
+            bool runLocal = false;
+            bool runRemote = false;
+
             foreach (var arg in args)
             {
                 switch (arg.ToLower())
                 {
                     case "--list-vulns":
-                    case "-l":
+                    case "-v":
                         ListVulnerabilities();
                         return;
 
@@ -74,12 +89,48 @@ namespace Moriarty
                     case "-h":
                         Info.PrintHelp();
                         return;
+
+                    case "--local":
+                    case "-l":
+                        runLocal = true;
+                        break;
+
+                    case "--remote":
+                    case "-r":
+                        runRemote = true;
+                        var targetsIndex = Array.IndexOf(args, arg) + 1;
+                        if (targetsIndex < args.Length)
+                        {
+                            targetMachines.AddRange(args[targetsIndex].Split(','));
+                        }
+                        break;
                 }
             }
 
             // If debug mode is enabled
             DebugUtility.DebugPrint("Debug mode enabled.");
 
+            if (runRemote)
+            {
+                foreach (var target in targetMachines)
+                {
+                    ScanRemoteMachine(target);
+                }
+            }
+
+            if (runLocal)
+            {
+                ScanLocalMachine();
+            }
+
+            if (!runLocal && !runRemote)
+            {
+                Info.PrintHelp();
+            }
+        }
+
+        private static void ScanLocalMachine()
+        {
             var supportedVersions = new Dictionary<int, string>()
             {
                 { 10240, "1507" }, { 10586, "1511" }, { 14393, "1607" }, { 15063, "1703" }, { 16299, "1709" },
@@ -107,27 +158,54 @@ namespace Moriarty
             }
 
             Console.WriteLine(" [*] Evaluating potential CVEs...");
-            var vulnerabilities = new VulnerabilityCollection(vulnerabilityChecks);
-            ExecuteVulnerabilityChecks(vulnerabilities, buildNumber, installedKBs);
+            var vulnerabilities = new VulnerabilityCollection(localVulnerabilityChecks);
+            ExecuteLocalVulnerabilityChecks(vulnerabilities, buildNumber, installedKBs);
+            vulnerabilities.ShowResults();
+        }
+
+        private static void ScanRemoteMachine(string target)
+        {
+            Console.WriteLine($" [*] Scanning remote machine: {target}");
+
+            Console.WriteLine($" [*] Evaluating potential CVEs on {target}...");
+            var vulnerabilities = new VulnerabilityCollection(remoteVulnerabilityChecks);
+            ExecuteRemoteVulnerabilityChecks(vulnerabilities);
             vulnerabilities.ShowResults();
         }
 
         private static void ListVulnerabilities()
         {
             Console.WriteLine(" [*] Listing all vulnerabilities scanned by Moriarty:");
-            var vulnerabilities = new VulnerabilityCollection(vulnerabilityChecks).GetAllVulnerabilities();
-            foreach (var vulnerability in vulnerabilities)
+            Console.WriteLine(" [*] Local vulnerabilities:");
+            var localVulnerabilities = new VulnerabilityCollection(localVulnerabilityChecks).GetAllVulnerabilities();
+            foreach (var vulnerability in localVulnerabilities)
+            {
+                Console.WriteLine($"  - {vulnerability.Identification}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine(" [*] Remote vulnerabilities:");
+            var remoteVulnerabilities = new VulnerabilityCollection(remoteVulnerabilityChecks).GetAllVulnerabilities();
+            foreach (var vulnerability in remoteVulnerabilities)
             {
                 Console.WriteLine($"  - {vulnerability.Identification}");
             }
             Console.WriteLine();
         }
 
-        private static void ExecuteVulnerabilityChecks(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
+        private static void ExecuteLocalVulnerabilityChecks(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
-            foreach (var check in vulnerabilityChecks)
+            foreach (var check in vulnerabilities.VulnerabilityChecks)
             {
                 check.Check(vulnerabilities, buildNumber, installedKBs);
+            }
+        }
+
+        private static void ExecuteRemoteVulnerabilityChecks(VulnerabilityCollection vulnerabilities)
+        {
+            foreach (var check in vulnerabilities.VulnerabilityChecks)
+            {
+                check.Check(vulnerabilities, 0, new List<int>()); // Assuming build number 0 and empty KB list for remote checks
             }
         }
     }

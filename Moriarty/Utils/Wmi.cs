@@ -54,5 +54,59 @@ namespace Moriarty
 
             return 0;
         }
+        public static int GetRemoteBuildNumber(string target)
+        {
+            var options = new ConnectionOptions();
+            var scope = new ManagementScope($"\\\\{target}\\root\\cimv2", options);
+
+            try
+            {
+                scope.Connect();
+                using (var searcher = new ManagementObjectSearcher(scope, new ObjectQuery("SELECT BuildNumber FROM Win32_OperatingSystem")))
+                {
+                    foreach (var queryObj in searcher.Get())
+                    {
+                        if (int.TryParse(queryObj["BuildNumber"].ToString(), out int buildNumber))
+                        {
+                            return buildNumber;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($" [!] Error connecting to {target}: {ex.Message}");
+            }
+
+            return 0;
+        }
+
+        public static List<int> GetRemoteInstalledKBs(string target)
+        {
+            var installedKBs = new List<int>();
+            var options = new ConnectionOptions();
+            var scope = new ManagementScope($"\\\\{target}\\root\\cimv2", options);
+
+            try
+            {
+                scope.Connect();
+                using (var searcher = new ManagementObjectSearcher(scope, new ObjectQuery("SELECT HotFixID FROM Win32_QuickFixEngineering")))
+                {
+                    foreach (var queryObj in searcher.Get())
+                    {
+                        if (queryObj["HotFixID"] != null && int.TryParse(queryObj["HotFixID"].ToString().Replace("KB", ""), out int kbNumber))
+                        {
+                            installedKBs.Add(kbNumber);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($" [!] Error connecting to {target}: {ex.Message}");
+            }
+
+            return installedKBs;
+        }
     }
 }

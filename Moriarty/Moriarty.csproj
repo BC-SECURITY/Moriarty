@@ -69,45 +69,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Msrc\CVE-2021-1675.cs" />
-    <Compile Include="Msrc\CVE-2021-36934.cs" />
-    <Compile Include="Msrc\CVE-2021-26858.cs" />
-    <Compile Include="Msrc\CVE-2021-27065.cs" />
-    <Compile Include="Msrc\CVE-2021-44228.cs" />
-    <Compile Include="Msrc\CVE-2022-22965.cs" />
-    <Compile Include="Msrc\CVE-2022-34718.cs" />
-    <Compile Include="Msrc\CVE-2022-40140.cs" />
-    <Compile Include="Msrc\CVE-2023-23397.cs" />
-    <Compile Include="Msrc\CVE_2021_26855.cs" />
-    <Compile Include="Msrc\CVE_2021_26857.cs" />
+    <Compile Include="Scans\Local\2021\CVE-2021-1675.cs" />
+    <Compile Include="Scans\Local\2021\CVE-2021-36934.cs" />
+    <Compile Include="Scans\Local\2021\CVE-2021-26858.cs" />
+    <Compile Include="Scans\Local\2021\CVE-2021-27065.cs" />
+    <Compile Include="Scans\Local\2021\CVE-2021-44228.cs" />
+    <Compile Include="Scans\Local\2022\CVE-2022-22965.cs" />
+    <Compile Include="Scans\Local\2022\CVE-2022-34718.cs" />
+    <Compile Include="Scans\Local\2022\CVE-2022-40140.cs" />
+    <Compile Include="Scans\Local\2023\CVE-2023-23397.cs" />
+    <Compile Include="Scans\Local\2021\CVE_2021_26855.cs" />
+    <Compile Include="Scans\Local\2021\CVE_2021_26857.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\Info.cs" />
-    <Compile Include="Msrc\CVE-2017-7199.cs" />
-    <Compile Include="Msrc\CVE-2019-1253.cs" />
-    <Compile Include="Msrc\CVE-2019-1385.cs" />
-    <Compile Include="Msrc\CVE-2020-0668.cs" />
-    <Compile Include="Msrc\CVE-2020-0683.cs" />
-    <Compile Include="Msrc\CVE-2020-0796.cs" />
-    <Compile Include="Msrc\CVE-2020-1013.cs" />
-    <Compile Include="Msrc\CVE-2019-1405.cs" />
-    <Compile Include="Msrc\CVE-2019-1388.cs" />
-    <Compile Include="Msrc\CVE-2019-1315.cs" />
-    <Compile Include="Msrc\CVE-2019-0836.cs" />
-    <Compile Include="Msrc\CVE-2019-1130.cs" />
-    <Compile Include="Msrc\CVE-2019-1064.cs" />
-    <Compile Include="Msrc\CVE-2019-0841.cs" />
-    <Compile Include="Msrc\CVE-2023-36664.cs" />
-    <Compile Include="Msrc\MS10-015.cs" />
-    <Compile Include="Msrc\MS10-092.cs" />
-    <Compile Include="Msrc\MS13-053.cs" />
-    <Compile Include="Msrc\MS13-081.cs" />
-    <Compile Include="Msrc\MS14-058.cs" />
-    <Compile Include="Msrc\MS15-051.cs" />
-    <Compile Include="Msrc\MS15-078.cs" />
-    <Compile Include="Msrc\MS16-016.cs" />
-    <Compile Include="Msrc\MS16-032.cs" />
-    <Compile Include="Msrc\MS16-034.cs" />
-    <Compile Include="Msrc\MS16-135.cs" />
+    <Compile Include="Scans\Local\2017\CVE-2017-7199.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1253.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1385.cs" />
+    <Compile Include="Scans\Local\2020\CVE-2020-0668.cs" />
+    <Compile Include="Scans\Local\2020\CVE-2020-0683.cs" />
+    <Compile Include="Scans\Local\2020\CVE-2020-0796.cs" />
+    <Compile Include="Scans\Local\2020\CVE-2020-1013.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1405.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1388.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1315.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-0836.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1130.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-1064.cs" />
+    <Compile Include="Scans\Local\2019\CVE-2019-0841.cs" />
+    <Compile Include="Scans\Local\2023\CVE-2023-36664.cs" />
+    <Compile Include="Scans\Local\2010\MS10-015.cs" />
+    <Compile Include="Scans\Local\2010\MS10-092.cs" />
+    <Compile Include="Scans\Local\2013\MS13-053.cs" />
+    <Compile Include="Scans\Local\2013\MS13-081.cs" />
+    <Compile Include="Scans\Local\2014\MS14-058.cs" />
+    <Compile Include="Scans\Local\2015\MS15-051.cs" />
+    <Compile Include="Scans\Local\2015\MS15-078.cs" />
+    <Compile Include="Scans\Local\2016\MS16-016.cs" />
+    <Compile Include="Scans\Local\2016\MS16-032.cs" />
+    <Compile Include="Scans\Local\2016\MS16-034.cs" />
+    <Compile Include="Scans\Local\2016\MS16-135.cs" />
     <Compile Include="Utils\VulnerabilityCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +129,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scans\Remote\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
