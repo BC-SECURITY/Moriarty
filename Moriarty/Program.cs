@@ -50,7 +50,6 @@ namespace Moriarty
             new CVE_2021_26858(),
             new CVE_2022_34718(),
             new CVE_2023_36664(),
-            new CVE_2023_23397(),
         };
 
         public static void Main(string[] args)
