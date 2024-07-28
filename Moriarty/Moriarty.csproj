@@ -77,7 +77,6 @@
     <Compile Include="Msrc\CVE-2022-22965.cs" />
     <Compile Include="Msrc\CVE-2022-34718.cs" />
     <Compile Include="Msrc\CVE-2022-40140.cs" />
-    <Compile Include="Msrc\CVE-2023-23397.cs" />
     <Compile Include="Msrc\CVE_2021_26855.cs" />
     <Compile Include="Msrc\CVE_2021_26857.cs" />
     <Compile Include="Utils\Debug.cs" />

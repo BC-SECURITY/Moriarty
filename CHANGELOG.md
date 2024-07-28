@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   **Security** in case of vulnerabilities.
 
 ## [Unreleased]
+### Removed
+-   Removed CVE-2023-23397 due to unreliability of check
 
 
 ## 1.2 - 2024-04-24
