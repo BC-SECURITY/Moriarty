@@ -12,7 +12,7 @@ namespace Moriarty
             Console.WriteLine("██ ████ ██ ██    ██ ██████  ██ ███████ ██████     ██      ████   ");
             Console.WriteLine("██  ██  ██ ██    ██ ██   ██ ██ ██   ██ ██   ██    ██       ██    ");
             Console.WriteLine("██      ██  ██████  ██   ██ ██ ██   ██ ██   ██    ██       ██    ");
-            Console.WriteLine("                                                 v1.2");
+            Console.WriteLine("                                                 v2.0");
             Console.WriteLine("                                                 BC Security\r\n");
         }
         public static void PrintHelp()
