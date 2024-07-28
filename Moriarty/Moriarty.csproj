@@ -80,6 +80,7 @@
     <Compile Include="Scans\Local\2023\CVE-2023-23397.cs" />
     <Compile Include="Scans\Local\2021\CVE_2021_26855.cs" />
     <Compile Include="Scans\Local\2021\CVE_2021_26857.cs" />
+    <Compile Include="Scans\Remote\2017\MS17-010.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\Info.cs" />
     <Compile Include="Scans\Local\2017\CVE-2017-7199.cs" />
@@ -130,8 +131,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scans\Remote\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

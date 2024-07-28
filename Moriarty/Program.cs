@@ -52,11 +52,6 @@ namespace Moriarty
             new CVE_2023_36664(),
         };
 
-        static List<IVulnerabilityCheck> remoteVulnerabilityChecks = new List<IVulnerabilityCheck>
-        {
-            new MS13_053(),
-        };
-
         public static void Main(string[] args)
         {
             Info.PrintLogo();
@@ -167,7 +162,12 @@ namespace Moriarty
         {
             Console.WriteLine($" [*] Scanning remote machine: {target}");
 
-            Console.WriteLine($" [*] Evaluating potential CVEs on {target}...");
+            var remoteVulnerabilityChecks = new List<IVulnerabilityCheck>
+            {
+                new MS17_010(target)
+                // Add other remote vulnerability checks here
+            };
+
             var vulnerabilities = new VulnerabilityCollection(remoteVulnerabilityChecks);
             ExecuteRemoteVulnerabilityChecks(vulnerabilities);
             vulnerabilities.ShowResults();
@@ -176,17 +176,8 @@ namespace Moriarty
         private static void ListVulnerabilities()
         {
             Console.WriteLine(" [*] Listing all vulnerabilities scanned by Moriarty:");
-            Console.WriteLine(" [*] Local vulnerabilities:");
-            var localVulnerabilities = new VulnerabilityCollection(localVulnerabilityChecks).GetAllVulnerabilities();
-            foreach (var vulnerability in localVulnerabilities)
-            {
-                Console.WriteLine($"  - {vulnerability.Identification}");
-            }
-            Console.WriteLine();
-
-            Console.WriteLine(" [*] Remote vulnerabilities:");
-            var remoteVulnerabilities = new VulnerabilityCollection(remoteVulnerabilityChecks).GetAllVulnerabilities();
-            foreach (var vulnerability in remoteVulnerabilities)
+            var vulnerabilities = new VulnerabilityCollection(localVulnerabilityChecks).GetAllVulnerabilities();
+            foreach (var vulnerability in vulnerabilities)
             {
                 Console.WriteLine($"  - {vulnerability.Identification}");
             }
@@ -195,7 +186,7 @@ namespace Moriarty
 
         private static void ExecuteLocalVulnerabilityChecks(VulnerabilityCollection vulnerabilities, int buildNumber, List<int> installedKBs)
         {
-            foreach (var check in vulnerabilities.VulnerabilityChecks)
+            foreach (var check in localVulnerabilityChecks)
             {
                 check.Check(vulnerabilities, buildNumber, installedKBs);
             }
@@ -205,7 +196,7 @@ namespace Moriarty
         {
             foreach (var check in vulnerabilities.VulnerabilityChecks)
             {
-                check.Check(vulnerabilities, 0, new List<int>()); // Assuming build number 0 and empty KB list for remote checks
+                check.Check(vulnerabilities, 0, new List<int>());
             }
         }
     }
