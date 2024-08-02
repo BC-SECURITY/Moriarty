@@ -6,6 +6,12 @@ Moriarty is a comprehensive .NET tool that extends the functionality of [Watson]
 - Windows 11 (Versions: 21H2, 22H1, 22H2, 23H1)
 - Server 2016, 2019, 2022
 
+## Sponsors
+<div align="center">
+
+[<img src="https://github.com/user-attachments/assets/604fbb97-4641-4a15-a6ba-039f67694f15" width="200"/>](https://www.route4me.com//)
+</div>
+
 ## Installation and Build Instructions
 First, clone the Moriarty repository to your local machine using Git:
 

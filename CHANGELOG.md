@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   **Security** in case of vulnerabilities.
 
 ## [Unreleased]
-
+- Added route4me to sponsorship page
 
 ## 1.2 - 2024-04-24
 ### Added
