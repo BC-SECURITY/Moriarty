@@ -122,4 +122,3 @@ Moriarty scans for a variety of CVEs and vulnerabilities. Below is a table detai
 | [CVE-2022-40140](https://www.cve.org/CVERecord?id=CVE-2022-40140) | A vulnerability in Microsoft Exchange Server leading to remote code execution. |
 | [CVE-2022-22965](https://www.cve.org/CVERecord?id=CVE-2022-22965) | Spring4Shell, a remote code execution vulnerability in Spring Framework. |
 | [CVE-2023-36664](https://www.cve.org/CVERecord?id=CVE-2023-36664) | Artifex Ghostscript through 10.01.2 mishandles permission validation for pipe devices (with the %pipe% prefix or the pipe character prefix). |
-| [CVE-2023-23397](https://www.cve.org/CVERecord?id=CVE-2023-23397) | Microsoft Outlook Elevation of Privilege Vulnerability. |
